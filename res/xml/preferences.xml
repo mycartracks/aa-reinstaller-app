@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Main settings -->    
+    
+    <EditTextPreference
+        android:key="preference_update_app_package"
+        android:summary="@string/preference_update_app_package_summary"
+        android:title="@string/preference_update_app_package_title" />
+     
+    <EditTextPreference
+        android:key="preference_update_app_url"
+        android:summary="@string/preference_update_app_url_summary"
+        android:title="@string/preference_update_app_url_title" />
+         
+    <EditTextPreference
+        android:key="preference_update_app_version_url"
+        android:summary="@string/preference_update_app_version_url_summary"
+        android:title="@string/preference_update_app_version_url_title" />
+    
+    <Preference
+   		android:key="preference_schedule_in_day_picker"
+        android:title="@string/preference_schedule_in_day_picker_title"
+        android:summary="@string/preference_schedule_in_day_picker_summary"/>
+        	
+    <Preference
+   		android:key="preference_schedule_in_time_picker"
+        android:title="@string/preference_schedule_in_time_picker_title"
+        android:summary="@string/preference_schedule_in_time_picker_summary"/>
+            
+    <ListPreference
+   		android:key="preference_schedule_in_time_and_day_max_retry"
+        android:defaultValue="3"
+        android:title="@string/preference_schedule_in_time_and_day_max_retry_title"
+        android:summary="@string/preference_schedule_in_time_and_day_max_retry_summary"
+        android:entries="@array/schedule_in_time_and_day_max_retry_options"
+        android:entryValues="@array/schedule_in_time_and_day_max_retry_values" />
+  
+</PreferenceScreen>

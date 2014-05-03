@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.slashidea.aareinstaller</groupId>
+	<artifactId>aa-reinstaller</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>apk</packaging>
+	<name>aa-reinstaller</name>
+
+	<!-- 
+		In case of problem with android-maven-plugin and system scope: 
+		http://groups.google.com/group/maven-android-developers/browse_thread/thread/f94e2bc6f3295096 
+		
+		$ mvn install:install-file -Dfile=lib/RootTools-1.7.jar -Dversion=1.7 -DartifactId=RootTools 
+		-DgroupId=com.stericson -DgeneratePom=true -Dpackaging=jar 
+		
+		$ mvn install:install-file -Dfile=lib/ignition-support-0.2.jar -Dversion=0.2 -DartifactId=ignition-support 
+		-DgroupId=com.github.ignition -DgeneratePom=true -Dpackaging=jar 
+	-->
+
+	<properties>
+		<platform.version>2.2.1</platform.version>
+		<androidannotations.version>2.7</androidannotations.version>
+		<ignition.version>0.2</ignition.version>
+		<androidmavenplugin.version>3.8.2</androidmavenplugin.version>
+		<sdk.path>/opt/android-sdk</sdk.path>
+		<sdk.platform>8</sdk.platform>
+		<jarsigner.keystore>debug.keystore</jarsigner.keystore>
+		<jarsigner.storepass>XXX</jarsigner.storepass>
+		<jarsigner.alias>my_debug_key</jarsigner.alias>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${platform.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.androidannotations</groupId>
+			<artifactId>androidannotations</artifactId>
+			<version>${androidannotations.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.androidannotations</groupId>
+			<artifactId>androidannotations-api</artifactId>
+			<version>${androidannotations.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ignition</groupId>
+			<artifactId>ignition-support</artifactId>
+			<version>${ignition.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.stericson</groupId>
+			<artifactId>RootTools</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.bsc.maven</groupId>
+			<artifactId>maven-processor-plugin</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>jfrog</id>
+			<name>jfrog repository</name>
+			<url>http://repo.jfrog.org/artifactory/plugins-releases-local</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<finalName>${project.name}</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<version>${androidmavenplugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
+					<assetsDirectory>${project.basedir}/assets</assetsDirectory>
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
+					<genDirectory>${project.basedir}/gen</genDirectory>
+					<sdk>
+						<platform>${sdk.platform}</platform>
+						<path>${sdk.path}</path>
+					</sdk>
+					<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					<proguard>
+						<skip>true</skip>
+						<config>proguard.cfg</config>
+					</proguard>
+					<sign>
+						<debug>false</debug>
+					</sign>
+					<zipalign>
+						<skip>false</skip>
+						<verbose>true</verbose>
+						<inputApk>${project.build.directory}/${project.build.finalName}.apk</inputApk>
+						<outputApk>${project.build.directory}/${project.build.finalName}-aligned.apk</outputApk>
+					</zipalign>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>signing</id>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<phase>package</phase>
+						<inherited>true</inherited>
+						<configuration>
+							<archiveDirectory></archiveDirectory>
+							<includes>
+								<include>${project.build.directory}/*.apk</include>
+								<include>${project.build.directory}/*.jar</include>
+							</includes>
+							<keystore>${jarsigner.keystore}</keystore>
+							<storepass>${jarsigner.storepass}</storepass>
+							<alias>${jarsigner.alias}</alias>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<extensions>true</extensions>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

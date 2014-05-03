@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+<!-- 	<EditText   -->
+<!-- 	    android:id="@+id/myInput" -->
+<!-- 	    android:layout_width="fill_parent"  -->
+<!-- 	    android:layout_height="wrap_content"  -->
+<!-- 	    /> -->
+		
+	<TextView  
+		android:id="@+id/activate_settings_textview"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" />
+		    
+	<Button  
+	    android:id="@+id/li_main_activate"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/activate"/> 
+	    
+	<Button  
+	    android:id="@+id/li_main_deactivate"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/deactivate"/> 
+	
+	<TextView  
+		android:id="@+id/li_main_output"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" />  
+
+</LinearLayout>

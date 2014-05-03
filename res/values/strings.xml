@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">AA Reinstaller</string>
+
+	<string name="activate">Activate!</string>
+	<string name="deactivate">Deactivate!</string>
+
+	<string name="actual_settings_info">
+        <![CDATA[
+        <b>App package:</b> %1$s <br/>
+        <b>Current App version:</b> %2$s <br/><br/>
+        <b>URL to APK:</b> %3$s <br/>
+        <b>Version URL:</b> %4$s<br/><br/>
+        <b>Check new App version every:</b> %5$s <b>at:</b> %6$s. <br/><br/>
+        <b>Last successfull auto-update:</b> %7$s<br/><br/>
+        ]]>
+	</string>
+	<string name="not_set">not set</string>
+	<string name="not_installed">not installed!</string>
+	<string name="never">never</string>
+
+	<string name="no">No</string>
+	<string name="yes">Yes</string>
+	<string name="ok">OK</string>
+	<string name="exit">Exit</string>
+	<string name="cancel">Cancel</string>
+	<string name="settings">Settings</string>
+
+	<string name="pick_time">Pick time</string>
+	<string name="pick_days">Pick days</string>
+	<string name="monday">Monday</string>
+	<string name="tuesday">Tuesday</string>
+	<string name="wednesday">Wednesday</string>
+	<string name="thursday">Thursday</string>
+	<string name="friday">Friday</string>
+	<string name="saturday">Saturday</string>
+	<string name="sunday">Sunday</string>
+
+	<string name="preference_schedule_in_day_picker_title">Days in the week to check for update</string>
+	<string name="preference_schedule_in_day_picker_summary">Select days of the week in which the app checks if
+		new update is available.</string>
+	<string name="preference_schedule_in_time_picker_title">Time of the day to check for update</string>
+	<string name="preference_schedule_in_time_picker_summary">Set time for selected days in which the app checks
+		if new update is available.</string>
+	<string name="preference_schedule_in_time_and_day_max_retry_title">Max. retry attempts</string>
+	<string name="preference_schedule_in_time_and_day_max_retry_summary">Set maximum retry attempts for update after
+		failure. Retry occurs every hour.</string>
+
+	<string name="preference_update_app_url_title">URL with APK file</string>
+	<string name="preference_update_app_url_summary">Set the URL where your new installation APK file is
+		located.</string>
+
+	<string name="preference_update_app_version_url_title">Version URL</string>
+	<string name="preference_update_app_version_url_summary">Set the URL where your TXT version file is located.
+		Version in this file must be same as a versionCode in the APK file.
+	</string>
+
+	<string name="preference_update_app_package_title">App package</string>
+	<string name="preference_update_app_package_summary">Set unique package name of the app which will be
+		reinstalled. Package must be same as package defined in the APK file.
+	</string>
+
+	<string name="no_root_title">Rooted Android required</string>
+	<string name="no_root_description">Either the su binary could not be found or you did
+		not allow root permission for this application.\n\nThis can happen
+		when your device is not rooted.</string>
+
+	<string name="no_busybox_title">BussyBox required</string>
+	<string name="no_busybox_description">To run this application BussyBox must be installed
+		on this device.</string>
+
+	<string name="no_busybox_url">https://play.google.com/store/apps/details?id=stericson.busybox
+	</string>
+
+	<string name="notification_unable_downlaod_apk">Unable to download APK file from url! Reason: %1$s.
+	</string>
+	<string name="notification_failed_install_apk">Unable to install new APK file!</string>
+	<string name="notification_unable_delete_apk">Unable to delete old APK files!</string>
+	<string name="notification_unable_download_version">Unable to download actual version from URL: %1$s!
+	</string>
+	<string name="notification_unable_parse_version">Unable to parse actual version from URL: %1$s! URL
+		must point to actual APK version as simple number.</string>
+	<string name="notification_unable_find_package">Unable to find app with package %1$s. App is
+		probbably not installed.</string>
+	<string name="notification_install_success">App with package: %1$s was successfully reinstalled
+		with version: %2$s.</string>
+
+</resources>
